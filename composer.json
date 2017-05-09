@@ -2,7 +2,7 @@
     "name": "iceberg2/service-slim",
     "description": "Slim service for Iceberg Application v2",
     "homepage": "https://github.com/iceberg2/service-slim",
-    "type": "project",
+    "type": "library",
     "minimum-stability": "stable",
     "keywords": ["iceberg"],
     "license": "MIT",
@@ -13,17 +13,20 @@
             "homepage": "http://www.articstudio.com"
         }
     ],
+    "provide": {
+        "iceberg2/iceberg-app": "^2.0"
+    },
     "require": {
         "php": ">=7.0.0",
         "slim/slim": "^3.4",
-        "container-interop/container-interop": "^1.1",
-        "articstudio/slim-interfaces": "~1.0",
-        "pimple/pimple": "^3.0",
-        "iceberg2/iceberg-app": "~1.0"
+        "articstudio/slim-interfaces": "^2.3.0"
+    },
+    "require-dev": {
+        "iceberg2/iceberg-app": "2.0.0-ALPHA2"
     },
     "autoload": {
         "psr-4": {
-            "IcebergServiceSlim\\": "src/"
+            "Articstudio\\IcebergApp\\Service\\Slim\\": "src/"
         }
     }
 }
