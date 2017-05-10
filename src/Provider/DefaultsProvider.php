@@ -3,12 +3,12 @@
 namespace Articstudio\IcebergApp\Service\Slim\Provider;
 
 use Pimple\ServiceProviderInterface as ServiceProviderContract;
-use Slim\Container as SlimContainer;
+use Pimple\Container as PimpleContainer;
 use Articstudio\IcebergApp\Application as IcebergApp;
 
 class DefaultsProvider implements ServiceProviderContract {
 
-    public function register(SlimContainer $container) {
+    public function register(PimpleContainer $container) {
         $app_container = IcebergApp::getInstance()->getContainer();
         if (!isset($container['env'])) {
             $container['env'] = $app_container->env;
