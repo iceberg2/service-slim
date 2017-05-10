@@ -26,11 +26,10 @@ class Manager {
             throw new NotFoundException(sprintf('Slim route error while retrieving "%s"', $route_class_name));
         }
         try {
-            $route = new $route_class_name;
-            if ($route instanceof Route) {
-                $app->map($route_class_name::getMethods(), $route_class_name::getPattern(), $route);
-            } else if ($route instanceof RouteGroup) {
-                $app->group($route_class_name::getPattern(), $route);
+            if (in_array(Route::class, class_implements($route_class_name))) {
+                $app->map($route_class_name::getMethods(), $route_class_name::getPattern(), $route_class_name);
+            } else if (in_array(RouteGroup::class, class_implements($route_class_name))) {
+                $app->group($route_class_name::getPattern(), $route_class_name);
             } else {
                 throw new NotFoundException(sprintf('Slim route error while retrieving "%1$s". Expected: %2$s or %3$s', $route_class_name, Route::class, RouteGroup::class));
             }
