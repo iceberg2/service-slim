@@ -13,6 +13,9 @@ class DefaultsProvider implements ServiceProviderContract {
         if (!isset($container['env'])) {
             $container['env'] = $app_container->env;
         }
+        if (!isset($container['isDevMode'])) {
+            $container['isDevMode'] = $app_container->isDevMode;
+        }
         if (!isset($container['db'])) {
             $container['db'] = $app_container->db;
         }
